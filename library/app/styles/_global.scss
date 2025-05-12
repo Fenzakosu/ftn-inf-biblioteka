@@ -36,3 +36,25 @@ body {
         }
     }
 }
+
+.table-details {
+
+    display: flex;
+    margin: 30px;
+
+
+
+    table {
+        border: 2px solid black;
+        border-collapse: separate;
+        border-radius: 5px;
+        background-color: lightgrey;
+
+        td {
+            padding: 10px;
+            margin: 5px;
+            font-size: 18px;
+            color: #007BFF;
+        }
+    }
+}
