@@ -16,7 +16,7 @@ for (let i = 0; i < books.length; i++) {
         <h2>${book.title}</h2><br>
         <p>${book.description}</p><br>
         <small>Datum štampanja: ${book.date}</small><br>
-        <p>Popularnost: ${"★".repeat(book.popularity)}</p>
+        <p>Popularnost: ${"⭐".repeat(book.popularity) + "☆".repeat(5-book.popularity)}</p>
     `;
     bookList.appendChild(bookDiv);
 }

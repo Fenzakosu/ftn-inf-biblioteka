@@ -7,6 +7,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+
+    h1{
+        text-align: center;
+        margin: 50px 0px 50px 0px; 
+        font-size: 40px;
+    }
 }
 
 .navbar {
@@ -19,16 +25,26 @@ body {
 
     .title {
         margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        a{
+            color: white;
+            text-decoration: none;
+        }
     }
 
     .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
+            width: 300px;
+            list-style: none;
+            justify-content: space-around;
+            display: flex;
+            gap: 1rem;
 
         a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
 
             &:hover {
                 color: $accent-color;
@@ -41,8 +57,6 @@ body {
 
     display: flex;
     margin: 30px;
-
-
 
     table {
         border: 2px solid black;

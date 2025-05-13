@@ -10,9 +10,6 @@ class Book {
     }
 }
 
-
-
-
 function initializeBooks() {
 
     let books = []
@@ -36,6 +33,17 @@ function initializeBooks() {
 function createBooksRow(books) {
     let tableData = document.getElementById("books")
     tableData.innerHTML = ''
+
+    if (tableData.rows.length === 0) {
+        let headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+            <th>Br</th>
+            <th>Title</th>
+            <th></th>
+        `;
+        tableData.appendChild(headerRow);
+    }
+
     for (let i = 0; i < books.length; i++) {
         let book = books[i];
 
@@ -71,5 +79,53 @@ function removeBook(id, books) {
     createBooksRow(books)
 }
 
-document.addEventListener('DOMContentLoaded', initializeBooks)
+function addNewBook(event) {
+    event.preventDefault();
+    
+    const bookTitle = document.getElementById('bookTitle').value;
+    const bookId = document.getElementById('bookId').value;
+    const bookDate = document.getElementById('bookDate').value;
+    const bookImage = document.getElementById('bookImage').value;      
+    const bookDesc = document.getElementById('bookDescription').value;
+    const bookPop = document.getElementById('bookPopularity').value;
+    const bookType = document.getElementById('bookType').value;
+    
+    // Uzimanje postojećih knjiga iz localStorage
+    let books = [];
+    if (localStorage.getItem("books")) {
+        books = JSON.parse(localStorage.getItem("books"));
+    }
+    
+    // Provera da li knjiga sa istim ID-om već postoji
+    if (books.some(book => book.id === bookId)) {
+        alert('Knjiga sa ovim ID-om već postoji!');
+        return;
+    }
+    
+    // Kreiranje nove knjige sa podrazumevanim vrednostima
+    const newBook = {
+        title: bookTitle,
+        id: bookId,        
+        date: bookDate,
+        url: bookImage, 
+        description: bookDesc,
+        popularity: bookPop,
+        rented: false
+    };
+    
+    books.push(newBook);
+    localStorage.setItem("books", JSON.stringify(books));   
+    createBooksRow(books);       
+    document.getElementById('bookForm').reset();  
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeBooks();
+    
+    const bookForm = document.getElementById('bookForm');
+    if (bookForm) {
+        bookForm.addEventListener('submit', addNewBook);
+    }
+});
 

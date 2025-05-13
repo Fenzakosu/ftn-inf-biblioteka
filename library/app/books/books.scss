@@ -1,1 +1,75 @@
 @use "../styles/global";
+$primary-color: #007bff;
+$accent-color: #0056b3;
+$warn-color: #dc3545;
+
+#book-list{
+  padding: 20px 300px 20px 300px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  div{
+    margin: 20px;
+    }
+}
+
+
+#books-form-container {
+   margin: 30px;
+    display: flex;
+    justify-content: space-around;
+
+    .table-details{
+        margin: 30;
+    }  
+}
+
+.book-form {
+  border: 2px solid black;
+  border-collapse: separate;
+  border-radius: 5px;
+  background-color: lightgrey;
+  padding: 20px;
+  
+  .form-group {
+    margin-bottom: 15px;
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: $primary-color;
+    }
+    
+    input, select {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+  }
+  
+  .btn {
+    background-color: $primary-color;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+}
+
