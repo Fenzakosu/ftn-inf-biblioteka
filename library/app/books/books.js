@@ -127,7 +127,7 @@ function addNewBook(event) {
     
     const bookTitle = document.getElementById('bookTitle').value;
     const bookId = document.getElementById('bookId').value;
-    const bookDate = document.getElementById('bookDate').value;
+    const bookDate = document.getElementById('bookDate').value;    
     const bookImage = document.getElementById('bookImage').value;      
     const bookDesc = document.getElementById('bookDescription').value;
     const bookPop = document.getElementById('bookPopularity').value;
