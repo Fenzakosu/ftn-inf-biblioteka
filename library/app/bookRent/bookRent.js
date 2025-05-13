@@ -38,6 +38,9 @@ function initializeBooks() {
 function createBooksRow(rentedBooks) {
     let tableData = document.getElementById("rented-books")
     tableData.innerHTML = ''
+
+    addTableHeaders(tableData)
+
     for (let i = 0; i < rentedBooks.length; i++) {
         let book = rentedBooks[i];
 
@@ -49,6 +52,21 @@ function createBooksRow(rentedBooks) {
         let title = document.createElement('td')
         title.textContent = book.title
 
+        let date = document.createElement('td')
+        date.textContent = book.date
+
+        let url = document.createElement('td')
+        url.textContent = book.url
+
+        let description = document.createElement('td')
+        description.textContent = book.description
+
+        let popularity = document.createElement('td')
+        popularity.textContent = book.popularity
+
+        let rented = document.createElement('td')
+        rented.textContent = book.rented ? "YES" : "NO"
+
         let rtn = document.createElement('td')
         let returnBtn = document.createElement('button')
         returnBtn.textContent = 'Return'
@@ -59,11 +77,44 @@ function createBooksRow(rentedBooks) {
         rtn.appendChild(returnBtn)
         tr.appendChild(id)
         tr.appendChild(title)
+        tr.appendChild(date)
+        tr.appendChild(url)
+        tr.appendChild(description)
+        tr.appendChild(popularity)
+        tr.appendChild(rented)
         tr.appendChild(rtn)
         tableData.appendChild(tr)
 
     }
 
+}
+
+function addTableHeaders(tableData) {
+    let trH = document.createElement('tr')
+
+    let idH = document.createElement('th')
+    idH.textContent = "Br"
+    let titleH = document.createElement('th')
+    titleH.textContent = "Title"
+    let dateH = document.createElement('th')
+    dateH.textContent = "Date"
+    let urlH = document.createElement('th')
+    urlH.textContent = "URL"
+    let descriptionH = document.createElement('th')
+    descriptionH.textContent = "Description"
+    let popularityH = document.createElement('th')
+    popularityH.textContent = "Popularity"
+    let rentedH = document.createElement('th')
+    rentedH.textContent = "Rented"
+
+    trH.appendChild(idH)
+    trH.appendChild(titleH)
+    trH.appendChild(dateH)
+    trH.appendChild(urlH)
+    trH.appendChild(descriptionH)
+    trH.appendChild(popularityH)
+    trH.appendChild(rentedH)
+    tableData.appendChild(trH)
 }
 
 function createAvailableBooksRow(availableBooks) {

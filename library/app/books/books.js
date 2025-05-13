@@ -34,15 +34,7 @@ function createBooksRow(books) {
     let tableData = document.getElementById("books")
     tableData.innerHTML = ''
 
-    if (tableData.rows.length === 0) {
-        let headerRow = document.createElement('tr');
-        headerRow.innerHTML = `
-            <th>Br</th>
-            <th>Title</th>
-            <th></th>
-        `;
-        tableData.appendChild(headerRow);
-    }
+    addTableHeaders(tableData)
 
     for (let i = 0; i < books.length; i++) {
         let book = books[i];
@@ -55,6 +47,21 @@ function createBooksRow(books) {
         let title = document.createElement('td')
         title.textContent = book.title
 
+        let date = document.createElement('td')
+        date.textContent = book.date
+
+        let url = document.createElement('td')
+        url.textContent = book.url
+
+        let description = document.createElement('td')
+        description.textContent = book.description
+
+        let popularity = document.createElement('td')
+        popularity.textContent = book.popularity
+
+        let rented = document.createElement('td')
+        rented.textContent = book.rented ? "YES" : "NO"
+
         let rmv = document.createElement('td')
         let removeBtn = document.createElement('button')
         removeBtn.textContent = 'Remove'
@@ -65,6 +72,11 @@ function createBooksRow(books) {
         rmv.appendChild(removeBtn)
         tr.appendChild(id)
         tr.appendChild(title)
+        tr.appendChild(date)
+        tr.appendChild(url)
+        tr.appendChild(description)
+        tr.appendChild(popularity)
+        tr.appendChild(rented)
         tr.appendChild(rmv)
         tableData.appendChild(tr)
 
@@ -74,9 +86,40 @@ function createBooksRow(books) {
 
 function removeBook(id, books) {
     books = books.filter(item => item.id !== id);
+    let rentedBooks = JSON.parse(localStorage.getItem("rentedBooks"))
+    rentedBooks = rentedBooks.filter(item => item.id !== id);
     localStorage.setItem("books", JSON.stringify(books))
+    localStorage.setItem("rentedBooks", JSON.stringify(rentedBooks))
     location.reload();
     createBooksRow(books)
+}
+
+function addTableHeaders(tableData) {
+    let trH = document.createElement('tr')
+
+    let idH = document.createElement('th')
+    idH.textContent = "Br"
+    let titleH = document.createElement('th')
+    titleH.textContent = "Title"
+    let dateH = document.createElement('th')
+    dateH.textContent = "Date"
+    let urlH = document.createElement('th')
+    urlH.textContent = "URL"
+    let descriptionH = document.createElement('th')
+    descriptionH.textContent = "Description"
+    let popularityH = document.createElement('th')
+    popularityH.textContent = "Popularity"
+    let rentedH = document.createElement('th')
+    rentedH.textContent = "Rented"
+
+    trH.appendChild(idH)
+    trH.appendChild(titleH)
+    trH.appendChild(dateH)
+    trH.appendChild(urlH)
+    trH.appendChild(descriptionH)
+    trH.appendChild(popularityH)
+    trH.appendChild(rentedH)
+    tableData.appendChild(trH)
 }
 
 function addNewBook(event) {
