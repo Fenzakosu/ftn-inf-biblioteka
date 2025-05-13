@@ -45,6 +45,7 @@ function createBooksRow(rentedBooks) {
         let book = rentedBooks[i];
 
         let tr = document.createElement('tr')
+        tr.className ="tr-body"
 
         let id = document.createElement('td')
         id.textContent = book.id
@@ -121,12 +122,19 @@ function createAvailableBooksRow(availableBooks) {
     let tableData = document.getElementById("available-books");
     if (!tableData) return;
     
-    tableData.innerHTML = '';
+ tableData.innerHTML = 
+    `<tr>
+        <th>Br</th>
+        <th>Title</th>
+        <th></th>
+    </tr>`;
+
     for (let i = 0; i < availableBooks.length; i++) {
         let book = availableBooks[i];
 
         let tr = document.createElement('tr');
-
+        tr.className ="tr-body"
+        
         let id = document.createElement('td');
         id.textContent = book.id;
 
